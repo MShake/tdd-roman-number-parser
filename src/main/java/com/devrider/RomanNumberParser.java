@@ -1,6 +1,6 @@
 package com.devrider;
 
-public class RomanNumber {
+public class RomanNumberParser {
 
     public static final String[] UNITS = {"", "I", "II", "III", "IV", "V", "VI", "VII", "VIII", "IX"};
     public static final String[] TENS = {"", "X", "XX", "XXX", "XL", "L", "LX", "LXX", "LXXX", "XC"};

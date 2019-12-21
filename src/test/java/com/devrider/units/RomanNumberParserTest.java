@@ -2,18 +2,18 @@ package com.devrider.units;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-import com.devrider.RomanNumber;
+import com.devrider.RomanNumberParser;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 
-public class RomanNumberTest {
+public class RomanNumberParserTest {
 
-    private RomanNumber romanNumber;
+    private RomanNumberParser romanNumber;
 
     @BeforeEach
     public void setUp() {
-        romanNumber = new RomanNumber();
+        romanNumber = new RomanNumberParser();
     }
 
     @Test
