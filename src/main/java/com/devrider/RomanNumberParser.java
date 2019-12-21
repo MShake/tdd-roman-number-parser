@@ -21,7 +21,7 @@ public class RomanNumberParser {
             romanNumber.append(getHundredsSymbol(Integer.parseInt(reverseNumber.substring(2, 3))));
         if (reverseNumber.length() >= 2)
             romanNumber.append(getTensSymbol(Integer.parseInt(reverseNumber.substring(1, 2))));
-        romanNumber.append(getUnitSymbol(Integer.parseInt(reverseNumber.substring(0, 1))));
+        romanNumber.append(getUnitsSymbol(Integer.parseInt(reverseNumber.substring(0, 1))));
 
         return romanNumber.toString();
     }
@@ -31,7 +31,7 @@ public class RomanNumberParser {
         return new StringBuilder().append(number).reverse().toString();
     }
 
-    private String getUnitSymbol(int index) {
+    private String getUnitsSymbol(int index) {
         return UNITS[index];
     }
 
