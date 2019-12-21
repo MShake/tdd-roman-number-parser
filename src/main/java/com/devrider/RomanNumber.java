@@ -2,7 +2,7 @@ package com.devrider;
 
 public class RomanNumber {
 
-    public static final String[] UNIT = {"", "I", "II", "III", "IV", "V", "VI", "VII", "VIII", "IX"};
+    public static final String[] UNITS = {"", "I", "II", "III", "IV", "V", "VI", "VII", "VIII", "IX"};
     public static final String[] TENS = {"", "X", "XX", "XXX", "XL", "L", "LX", "LXX", "LXXX", "XC"};
     public static final String[] HUNDREDS = {"", "C", "CC", "CCC", "CD", "D", "DC", "DCC", "DCCC", "CM"};
     public static final String[] THOUSANDS = {"", "M", "MM", "MMM", "MMMM"};
@@ -32,7 +32,7 @@ public class RomanNumber {
     }
 
     private String getUnitSymbol(int index) {
-        return UNIT[index];
+        return UNITS[index];
     }
 
     private String getTensSymbol(int index) {
