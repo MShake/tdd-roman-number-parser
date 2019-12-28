@@ -7,11 +7,14 @@ public class RomanNumberParser {
     public static final String[] HUNDREDS = {"", "C", "CC", "CCC", "CD", "D", "DC", "DCC", "DCCC", "CM"};
     public static final String[] THOUSANDS = {"", "M", "MM", "MMM", "MMMM"};
 
-    public String draw(int number) {
+    public String draw(int number) throws RomanNumberExceededException {
+        if (number > 4999)
+            throw new RomanNumberExceededException();
         return computeNumber(number);
     }
 
     private String computeNumber(int number) {
+
         String reverseNumber = reverseNumber(number);
         StringBuilder romanNumber = new StringBuilder();
 
