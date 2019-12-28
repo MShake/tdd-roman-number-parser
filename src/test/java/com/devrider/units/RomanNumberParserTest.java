@@ -1,6 +1,5 @@
 package com.devrider.units;
 
-
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
@@ -121,11 +120,11 @@ public class RomanNumberParserTest {
 
     @Test
     public void shouldThrowRomanNumberOutOfRangeExceptionWhenNumberBiggerThan4999() {
-        assertThrows(RomanNumberOutOfRangeException.class, () -> romanNumber.draw(8347), "Expected romanNumber.draw(8347) to throw, but it didn't");
+        assertThrows(RomanNumberOutOfRangeException.class, () -> romanNumber.draw(8347));
     }
 
     @Test
     public void shouldThrowRomanNumberOutOfRangeExceptionWhenNumberSmallerThan0() {
-        assertThrows(RomanNumberOutOfRangeException.class, () -> romanNumber.draw(-238), "Expected romanNumber.draw(-238) to throw, but it didn't");
+        assertThrows(RomanNumberOutOfRangeException.class, () -> romanNumber.draw(-238));
     }
 }
