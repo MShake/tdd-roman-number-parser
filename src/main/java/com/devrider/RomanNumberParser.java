@@ -1,11 +1,15 @@
 package com.devrider;
 
-public class RomanNumberParser {
+import java.util.HashMap;
+import java.util.Map;
 
-    public static final String[] UNITS = {"", "I", "II", "III", "IV", "V", "VI", "VII", "VIII", "IX"};
-    public static final String[] TENS = {"", "X", "XX", "XXX", "XL", "L", "LX", "LXX", "LXXX", "XC"};
-    public static final String[] HUNDREDS = {"", "C", "CC", "CCC", "CD", "D", "DC", "DCC", "DCCC", "CM"};
-    public static final String[] THOUSANDS = {"", "M", "MM", "MMM", "MMMM"};
+public class RomanNumberParser {
+    public static final Map<Integer, String[]> symbols = new HashMap<Integer, String[]>() {{
+        put(1, new String[] {"", "I", "II", "III", "IV", "V", "VI", "VII", "VIII", "IX"});
+        put(2, new String[] {"", "X", "XX", "XXX", "XL", "L", "LX", "LXX", "LXXX", "XC"});
+        put(3, new String[] {"", "C", "CC", "CCC", "CD", "D", "DC", "DCC", "DCCC", "CM"});
+        put(4, new String[] {"", "M", "MM", "MMM", "MMMM"});
+    }};
 
     public String draw(int number) throws RomanNumberOutOfRangeException {
         if (number < 0 || number > 4999)
@@ -20,36 +24,20 @@ public class RomanNumberParser {
         String reverseNumber = reverseNumber(number);
         StringBuilder romanNumber = new StringBuilder();
 
-        if (reverseNumber.length() >= 4)
-            romanNumber.append(getThousandsSymbol(Integer.parseInt(reverseNumber.substring(3, 4))));
-        if (reverseNumber.length() >= 3)
-            romanNumber.append(getHundredsSymbol(Integer.parseInt(reverseNumber.substring(2, 3))));
-        if (reverseNumber.length() >= 2)
-            romanNumber.append(getTensSymbol(Integer.parseInt(reverseNumber.substring(1, 2))));
-        romanNumber.append(getUnitsSymbol(Integer.parseInt(reverseNumber.substring(0, 1))));
+        for (int i = 0; i < reverseNumber.length(); i++)
+            romanNumber.append(getSymbol(reverseNumber.length() - i, Integer.parseInt(reverseNumber.substring(reverseNumber.length() - i - 1, reverseNumber.length() - i))));
 
         return romanNumber.toString();
     }
 
-    // TODO: REFACTOR to be SRP (Single Responsibility Principle) compliant
     private String reverseNumber(int number) {
         return new StringBuilder().append(number).reverse().toString();
     }
 
-    private String getUnitsSymbol(int index) {
-        return UNITS[index];
-    }
-
-    private String getTensSymbol(int index) {
-        return TENS[index];
-    }
-
-    private String getHundredsSymbol(int index) {
-        return HUNDREDS[index];
-    }
-
-    private String getThousandsSymbol(int index) {
-        return THOUSANDS[index];
+    private String getSymbol(int size, int index) {
+        return symbols.get(size)[index];
     }
 }
+
+
 

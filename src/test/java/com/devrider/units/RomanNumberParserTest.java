@@ -6,7 +6,10 @@ import static org.junit.jupiter.api.Assertions.assertThrows;
 import com.devrider.RomanNumberOutOfRangeException;
 import com.devrider.RomanNumberParser;
 import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.CsvSource;
 
 
 public class RomanNumberParserTest {
@@ -18,54 +21,64 @@ public class RomanNumberParserTest {
         romanNumber = new RomanNumberParser();
     }
 
+    @Nested
+    class shouldComputeUnit {
+
+        @Test
+        public void returnIif1() throws RomanNumberOutOfRangeException {
+            assertEquals("I", romanNumber.draw(1));
+        }
+
+        @Test
+        public void returnIIif2() throws RomanNumberOutOfRangeException{
+            assertEquals("II", romanNumber.draw(2));
+        }
+
+        @Test
+        public void returnIIIif3() throws RomanNumberOutOfRangeException{
+            assertEquals("III", romanNumber.draw(3));
+        }
+
+        @Test
+        public void returnIVif4() throws RomanNumberOutOfRangeException{
+            assertEquals("IV", romanNumber.draw(4));
+        }
+
+        @Test
+        public void returnVif5() throws RomanNumberOutOfRangeException{
+            assertEquals("V", romanNumber.draw(5));
+        }
+
+        @Test
+        public void returnVIif6() throws RomanNumberOutOfRangeException{
+            assertEquals("VI", romanNumber.draw(6));
+        }
+
+        @Test
+        public void returnVIIif7() throws RomanNumberOutOfRangeException{
+            assertEquals("VII", romanNumber.draw(7));
+        }
+
+        @Test
+        public void returnVIIIif8() throws RomanNumberOutOfRangeException{
+            assertEquals("VIII", romanNumber.draw(8));
+        }
+
+        @Test
+        public void returnIXif9() throws RomanNumberOutOfRangeException{
+            assertEquals("IX", romanNumber.draw(9));
+        }
+    }
+
+    @ParameterizedTest(name = "{1} should return {0}")
+    @CsvSource({"X,10","XI,11"})
+    void shouldComputeTens(String romanTen, int number) throws RomanNumberOutOfRangeException {
+        assertEquals(romanTen, romanNumber.draw(number));
+    }
+
     @Test
     public void returnNullaIf0() throws RomanNumberOutOfRangeException{
         assertEquals("nulla", romanNumber.draw(0));
-    }
-
-    @Test
-    public void returnIif1() throws RomanNumberOutOfRangeException {
-        assertEquals("I", romanNumber.draw(1));
-    }
-
-    @Test
-    public void returnIIif2() throws RomanNumberOutOfRangeException{
-        assertEquals("II", romanNumber.draw(2));
-    }
-
-    @Test
-    public void returnIIIif3() throws RomanNumberOutOfRangeException{
-        assertEquals("III", romanNumber.draw(3));
-    }
-
-    @Test
-    public void returnIVif4() throws RomanNumberOutOfRangeException{
-        assertEquals("IV", romanNumber.draw(4));
-    }
-
-    @Test
-    public void returnVif5() throws RomanNumberOutOfRangeException{
-        assertEquals("V", romanNumber.draw(5));
-    }
-
-    @Test
-    public void returnVIif6() throws RomanNumberOutOfRangeException{
-        assertEquals("VI", romanNumber.draw(6));
-    }
-
-    @Test
-    public void returnVIIif7() throws RomanNumberOutOfRangeException{
-        assertEquals("VII", romanNumber.draw(7));
-    }
-
-    @Test
-    public void returnVIIIif8() throws RomanNumberOutOfRangeException{
-        assertEquals("VIII", romanNumber.draw(8));
-    }
-
-    @Test
-    public void returnIXif9() throws RomanNumberOutOfRangeException{
-        assertEquals("IX", romanNumber.draw(9));
     }
 
     @Test
