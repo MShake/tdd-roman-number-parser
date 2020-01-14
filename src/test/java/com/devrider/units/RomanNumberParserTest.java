@@ -52,16 +52,22 @@ public class RomanNumberParserTest {
     }
 
     @Nested
-    class shouldManageException {
+    class shouldThrowRomanNumberOutOfRangeException {
 
         @Test
-        public void shouldThrowRomanNumberOutOfRangeExceptionWhenNumberBiggerThan4999() {
+        public void whenNumberBiggerThan4999() {
             assertThrows(RomanNumberOutOfRangeException.class, () -> romanNumber.draw(8347));
         }
 
         @Test
-        public void shouldThrowRomanNumberOutOfRangeExceptionWhenNumberSmallerThan0() {
+        public void whenNumberSmallerThan0() {
             assertThrows(RomanNumberOutOfRangeException.class, () -> romanNumber.draw(-238));
+        }
+
+        @Test
+        public void withHumanReadableMessage() {
+            Exception exception = assertThrows(RomanNumberOutOfRangeException.class, () -> romanNumber.draw(10987));
+            assertEquals(exception.getMessage(), "Number out of roman range");
         }
     }
 

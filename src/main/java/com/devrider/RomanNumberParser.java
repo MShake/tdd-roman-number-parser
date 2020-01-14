@@ -13,7 +13,7 @@ public class RomanNumberParser {
 
     public String draw(int number) throws RomanNumberOutOfRangeException {
         if (number < 0 || number > 4999)
-            throw new RomanNumberOutOfRangeException();
+            throw new RomanNumberOutOfRangeException("Number out of roman range");
         if (number == 0 )
             return "nulla";
         return computeNumber(number);
