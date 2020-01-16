@@ -3,7 +3,7 @@ This is a simple roman number parser developed with JAVA under TDD.
 The goal of the project is to study Test Driven Development and implement an algorithm with JAVA under this method. 
 
 ## Run App
-Simply checkout the project and run com.devrider.App with number as parameter.
+Simply checkout the project and run com.devrider.AppConsole.
 
 ## Run Tests
 Simply checkout the project and run the com.devrider.units.RomanNumberParserTest. 
